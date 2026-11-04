@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from parking_report.givatayim import FormError, ResidentReport
+from givatayim_adapter import FormError, ResidentReport
 
 SYNTHETIC_FIRST_NAME = "שםבדיקה"
 SYNTHETIC_LAST_NAME = "שםמשפחהבדיקה"

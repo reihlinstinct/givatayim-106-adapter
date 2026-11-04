@@ -1,0 +1,46 @@
+{
+  "required": [
+    "README.md",
+    "LICENSE",
+    "SECURITY.md",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "ACCESSIBILITY.md",
+    "CHANGELOG.md",
+    "Dockerfile",
+    "pyproject.toml",
+    "repo-layout.json"
+  ],
+  "root_allowed": [
+    "README.md",
+    "LICENSE",
+    "SECURITY.md",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "ACCESSIBILITY.md",
+    "CHANGELOG.md",
+    "Dockerfile",
+    "pyproject.toml",
+    "repo-layout.json",
+    ".gitignore"
+  ],
+  "folders": {
+    "src/": [
+      ".py"
+    ],
+    "tests/": [
+      ".py",
+      ".html"
+    ],
+    "docs/": [
+      ".md"
+    ],
+    "scripts/": [
+      ".py"
+    ],
+    ".github/": [
+      ".md",
+      ".yml"
+    ]
+  }
+}

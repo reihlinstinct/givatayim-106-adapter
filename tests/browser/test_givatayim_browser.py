@@ -8,7 +8,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 from test_givatayim import report
 
-from parking_report.givatayim import URL, FormError, create_session
+from givatayim_adapter import URL, FormError, create_session
 
 FIXTURE = Path(__file__).parents[1] / "fixtures/givatayim/form.html"
 

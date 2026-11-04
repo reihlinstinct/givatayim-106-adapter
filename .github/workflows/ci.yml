@@ -1,0 +1,47 @@
+name: CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 4 * * 0'
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.11'
+      - run: pip install '.[dev]'
+      - run: python scripts/check_repo.py
+      - run: ruff check . && ruff format --check . && mypy src
+      - run: bandit -r src && pip-audit
+      - if: always()
+        run: echo 'Quality includes layout/privacy, lint/format, types, SAST and dependency audit; inspect step outcomes for failures.' >> "$GITHUB_STEP_SUMMARY"
+  container:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - run: |
+          docker build --target test --build-arg PYTHON_VERSION=3.11 -t givatayim-test .
+          id=$(docker create givatayim-test)
+          docker cp "$id:/app/browser-evidence" browser-evidence
+          docker cp "$id:/app/coverage.json" coverage.json
+          docker rm "$id"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: synthetic-browser-and-coverage
+          path: |
+            browser-evidence/
+            coverage.json
+          if-no-files-found: error
+      - if: always()
+        run: echo 'Container uses Python3.11, synthetic Chromium/WebKit E2E and enforced80% branch coverage; no live municipal requests.' >> "$GITHUB_STEP_SUMMARY"

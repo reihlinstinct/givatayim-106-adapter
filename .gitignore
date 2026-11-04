@@ -1,0 +1,11 @@
+__pycache__/
+*.egg-info/
+.venv/
+.coverage*
+coverage.json
+htmlcov/
+browser-evidence/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
