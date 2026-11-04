@@ -39,4 +39,4 @@ human verification (403) and obtained no token. Actual live filling and municipa
 acceptance remain unverified; a separately
 approved real Givatayim case is required before any live submission testing.
 
-Python3.11+; version0.1.0. CI enforces80% branch coverage with synthetic Chromium/WebKit tests in containers. See CONTRIBUTING.md, SECURITY.md and CHANGELOG.md.
+Python 3.11+; version 0.1.0. CI enforces 80% branch coverage with synthetic Chromium/WebKit tests in containers. See CONTRIBUTING.md, SECURITY.md and CHANGELOG.md.
