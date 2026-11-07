@@ -36,9 +36,9 @@ def load_contract(root: Path) -> dict[str, Any]:
 
 def tracked_files(root: Path) -> list[str]:
     """Return the repository's tracked file paths."""
-    cmd = ["git", "ls-files"]
+    cmd = ["git", "ls-files", "-z"]
     out = subprocess.run(cmd, cwd=root, check=True, capture_output=True, text=True)
-    return [line for line in out.stdout.splitlines() if line]
+    return [path for path in out.stdout.split("\0") if path]
 
 
 def check(root: Path) -> list[str]:
