@@ -22,7 +22,8 @@
     "Dockerfile",
     "pyproject.toml",
     "repo-layout.json",
-    ".gitignore"
+    ".gitignore",
+    ".repo-layout.yml"
   ],
   "folders": {
     "src/": [
@@ -41,6 +42,9 @@
     ".github/": [
       ".md",
       ".yml"
+    ],
+    "tools": [
+      ".py"
     ]
   }
 }
