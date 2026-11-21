@@ -7,7 +7,7 @@ version = "0.1.0"
 description = "Fill-only Givatayim municipal form browser adapter"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = ["playwright==1.64.1"]
+dependencies = ["playwright==1.65.2"]
 [project.optional-dependencies]
 dev = ["coverage>=7.10,<8", "ruff==0.17.5", "mypy>=1.19,<3", "bandit>=1.8,<2", "pip-audit>=2.9,<3"]
 [tool.setuptools.packages.find]
